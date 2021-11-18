@@ -1,6 +1,6 @@
-table <- read.table("XXXXXXXXXX.txt", header=T)
+table1 <- read.table("XXXXXXXXXX.txt", header=T)
 
-data <- as.matrix(table)
+data <- as.matrix(table1)
 library(gplots)
 
 heatmap.2(
