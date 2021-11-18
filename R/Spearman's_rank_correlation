@@ -1,0 +1,5 @@
+table1 <- read.table("XXXXXXXXXX.txt", header=F)
+x1 <- table1[,1]
+y1 <- table1[,2]
+sp <-cor.test(x1, y1,  method = "spearman")
+sp
