@@ -1,0 +1,14 @@
+table <- read.table("XXXXXXXXXX.txt", header=T)
+
+data <- as.matrix(table)
+library(gplots)
+
+heatmap.2(
+  data, scale = "none",
+  dendrogram = "row", Rowv = TRUE, Colv = NA,
+  col = bluered(256),
+  breaks=seq(-3,3,length.out=257),
+  trace = "none",
+  density.info=c("none"),
+  main = "Expression pattern"
+)
