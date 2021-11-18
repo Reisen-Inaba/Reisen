@@ -1,0 +1,2 @@
+counts = matrix(c(XX,XX,XXXX,XXXX), nrow = 2)
+fisher.test(counts)
