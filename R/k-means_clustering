@@ -1,9 +1,9 @@
-table <- read.table("XXXXXXXXXX.txt", header=T)
+table1 <- read.table("XXXXXXXXXX.txt", header=T)
 library(NbClust)
 
-nb <- NbClust(table, distance = "euclidean", min.nc = 2,
+nb <- NbClust(table1, distance = "euclidean", min.nc = 2,
         max.nc = 15, method = "kmeans", index ="all")
 
 
-km.res <- kmeans(table, 3, nstart = 25)
+km.res <- kmeans(table1, 3, nstart = 25)
 km.res$cluster
