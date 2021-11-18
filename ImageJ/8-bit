@@ -1,0 +1,10 @@
+dir = getDirectory("Choose a Directory");
+list1 = getFileList(dir);
+for(i=0; i<list1.length; i++){
+	open(dir + "\\" + list1[i]);
+	run("8-bit");
+	name = dir + "\\" + list1[i];
+	newname = substring(name, 0, lastIndexOf(name, ".")) + "_8-bit.tif";	//newnameをつける
+	saveAs("Tiff", newname);
+	close();
+	}
