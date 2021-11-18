@@ -1,0 +1,5 @@
+library(ggplot2)
+data <- read.table("XXXXXXXXXX.txt", header=T)
+ggplot(data, aes(x= Conc, y= Intensity)) + 
+        geom_point() +
+        geom_smooth()
