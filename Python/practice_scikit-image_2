@@ -1,7 +1,19 @@
+# import modules
 import numpy as np
 import matplotlib.pyplot as plt
+
+# import image
 from skimage import data
 camera = data.camera()
-mask = camera < 87
+
+# simple description: plt.imshow(data.camera())
+
+# convert dark region into white
+mask = camera < 80
 camera[mask] = 255
+
+# top 200 pixels hidden
+camera[:200] = 0
+
+# show black and white image
 plt.imshow(camera,cmap='gray')
