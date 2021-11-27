@@ -1,0 +1,9 @@
+import numpy as np
+import matplotlib.pyplot as plt
+data = np.zeros((20,20))
+data[::2,1::2] = 1
+data[1::2,::2] = 1
+plt.imshow(data,cmap='gray')
+from skimage import data
+camera = data.camera()
+plt.imshow(data.camera())
