@@ -1,9 +1,16 @@
+# import modules
 import numpy as np
 import matplotlib.pyplot as plt
+
+# prepare 20x20 matrix
+# the number can be changed
 data = np.zeros((20,20))
+
+#alignment of pixels
+# the number can be changed
 data[::2,1::2] = 1
 data[1::2,::2] = 1
+
+# show black and white image
+# other example cmap="GnBu"
 plt.imshow(data,cmap='gray')
-from skimage import data
-camera = data.camera()
-plt.imshow(data.camera())
