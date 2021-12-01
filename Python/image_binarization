@@ -1,0 +1,30 @@
+from skimage.io import imread
+import os
+from PIL import Image
+from skimage import filters,measure
+
+test_filename="test.tif"
+
+# Folders to analyse ("practice_folder" at desktop)
+pathList=[]
+pathList.append("C:/Users/81905/Desktop/practice_folder/")
+
+def load_image(toload):
+    image = imread(toload)
+    return image
+
+def threshold_image_otsu(input_image):
+    threshold_value = filters.threshold_otsu(input_image)    
+    binary_image = input_image>threshold_value
+    return threshold_value, binary_image
+
+for path in pathList:
+    # Load the image
+    test_image = load_image(path+test_filename)
+ 
+    # Binarise the image
+    test_binary_threshdold, test_binary_image = threshold_image_otsu(test_image)
+    
+    # Save the binary image
+    im = Image.fromarray(test_binary_image)
+    im.save(path+'test_binary.tif')
