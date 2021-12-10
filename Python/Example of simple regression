@@ -63,3 +63,25 @@ plot_line(ax, 1, 1)
 plot_hat_y(ax, D, 1, 1, offset_hat_y)
 plt.legend(loc='upper left')
 plt.show()
+
+offset_epsilon = [-0.3, -0.3, 0.3, 0.3]
+
+def plot_error(plt, ax, D, a, b, offset_epsilon=None):
+    A = []
+    for i, row in enumerate(D):
+        x, y = row
+        y_hat = a * x + b
+        ymin = min(y, y_hat)
+        ymax = max(y, y_hat)
+        A.append(plt.vlines([x], ymin, ymax, linestyles='dashed', color=colormap[i], alpha=0.5))
+        if offset_epsilon is not None:
+            A.append(ax.text(x + offset_epsilon[i], (ymin + ymax) / 2, f'$\epsilon_{i+1}$', ha='center', va='center'))
+    return A
+
+fig, ax = init_graph()
+plot_data(ax, D, offset_y)
+plot_line(ax, 1, 1)
+plot_hat_y(ax, D, 1, 1, offset_hat_y)
+plot_error(plt, ax, D, 1, 1, offset_epsilon)
+plt.legend(loc='upper left')
+plt.show()
