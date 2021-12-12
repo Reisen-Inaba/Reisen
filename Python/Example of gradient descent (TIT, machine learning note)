@@ -1,0 +1,40 @@
+# Reference: Tokyo Institute of Technology, machine learning note
+# https://chokkan.github.io/mlnote/regression/04sgd.html
+
+import numpy as np
+import matplotlib.pyplot as plt
+import matplotlib.collections
+import matplotlib.animation
+import matplotlib.colors
+from IPython.display import HTML
+
+def f(x):
+    return 0.5 * x ** 2 - 5 * x + 13.5
+
+def g(x):
+    return x - 5
+
+def sd(f, g, x=0., eta=0.01, eps=1e-4):
+    t = 1
+    H = []
+    while True:
+        gx = g(x)
+        H.append(dict(t=t, x=x, fx=f(x), gx=gx))
+        if -eps < gx < eps:
+            break
+        x -= eta * gx
+        t += 1
+    return H
+
+H = sd(f, g, x = 9, eta=0.5)
+H[-1]
+
+fig, ax = plt.subplots(dpi=100)
+ax.plot(
+    [h['t'] for h in H],
+    [h['fx'] for h in H],
+    'o-'
+    )
+ax.set_xlabel('$t$')
+ax.set_ylabel('$f(x)$')
+ax.grid()
